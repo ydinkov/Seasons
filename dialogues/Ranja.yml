@@ -1,0 +1,132 @@
+#The name of the character or dialogue tree
+name: "Ruby Rick"
+
+# Here we can declare a set of 'moods', a character can take during dialogue
+# Later you can attach theme moods to individual lines and use them in-game
+moods:
+  default: "pensive.jpg"
+  excited: "excited.jpg"
+  sad: "sad.jpg"
+
+
+# Here we can declare sound effects that can be triggered in game by individual lines
+sounds:
+  birds: "birds.wav"
+  greeting: "greeting.wav"
+
+
+# Here we declare a list of VARIABLES, that are used to conditionally 
+# offer options, show or hide dialogue lines or enable whole branches
+# You can chose to set these variables here, and they will be evaluated BEFORE the game state
+# You must declare all variables that are used in the conditions for you dialogue tree
+variables:
+  - "HasMetRuby"
+  - "FoundTheLuteStarted"
+  - "FoundTheLute=false"
+  - "AcceptedFindTheLute=false"
+
+
+# This is the root component of the dialogue tree
+# A tree consists of a set of "Scenes"
+# Each scene has a set of BEATS.
+# The dialogue that the player reads is evaluated beat by beat
+scenes:
+  #Scene1
+  introduction:
+	beats:
+	  # Each beat may contain a PREDICATE and two LINES:
+	  # a Success LINE and a Failure LINE.
+	  # If the predicate resolves to true, success line is returned,
+	  # If the predicate resolves to false, failure line is returned,      
+	  - predicate: "HasMetRuby"
+		# Each line may contain:
+		# - A mood, that can be used in-game
+		# - A sounds, that can be used in-game
+		# - An Array of text that may be printed in game. Each item in the array containing a BARK
+		#     NOTE: if a line has multiple texts, the interpreter will choose a random BARK from the list to return
+		#     you can inject a custom bark selector.
+		# - A next: This is a reference to another scene in the tree.
+		#     After this line is returned, the first line of the referenced scene will be loaded
+		#     This allows you to string a set of scenes together in a tree
+		# - A trigger: returning lines can have in-game triggers. These can be listened to in-game
+		success:
+		  mood: excited
+		  sound: greeting
+		  text: [ "Hey Buddy!" ]
+		  next: welcome #Routes the conversation to the 'welcome' scene
+		failure:
+		  mood: default
+		  text: [ "Step closer stranger." ]
+
+	  # If no predicate is defined, the success line is always printed
+	  - success:
+		  mood: sad
+		  text: [ "Man, Listen to this..." ]
+	  # Then beats will be printed one after another
+	  - success:
+		  mood: default
+		  text: [ "Listen to how prettily the birds chirp" ]
+
+	  - success:
+		  mood: pensive
+		  text: [ "You just might miss it.." ]
+		  trigger: "HasMetRuby=true"
+		  next: welcome
+
+  #Scene2
+  welcome:
+	beats:
+	  - success:
+		  mood: excited
+		  text: [ "Anything else I do you for?" ]
+		  # Sometimes a line can contain dialogue OPTIONS
+		  # These options allow the player to branch out into different scenes
+		  # Each option can forward the player to a different scene
+		  options:
+			- text: "Buy Instruments"
+			  next: leave #TODO
+			- text: "Sell Music"
+			  next: leave #TODO
+			- text: "Find the lute"
+			  # NOTE: Options can have predicates,
+			  # these will only be shown to the player
+			  # if they resolve to true
+			  predicate: "!FoundTheLute"
+			  next: find_the_lute
+			- text: "Bye!"
+			  next: leave
+  #Scene3
+  find_the_lute:
+	beats:
+	  - success:
+		  mood: excited
+		  text: [ "Oh jeez. These birds are really rocking out!" ]
+
+	  - success:
+		  mood: sad
+		  text: [ "I wish i had my lute with me to help me rock out" ]
+
+	  - success:
+		  mood: sad
+		  text: [ "Could you help me look? It's somewhere around the house" ]
+		  options:
+			- text: "Sure!"
+			  next: thanks_for_accepting_FindTheLute
+			- text: "Maybe Later..."
+			  next: leave
+
+  #Scene4    
+  thanks_for_accepting_FindTheLute:
+	beats:
+	  - success:
+		  # The game can listen to these events being thrown during dialogue
+		  trigger: "AcceptedFindTheLute"
+		  text: [ "Aww thank you so much!" ]
+		  next: welcome
+
+  #Scene5          
+  leave:
+	beats:
+	  - success:
+		  text: [ "See ya later!" ]
+		  next: exit

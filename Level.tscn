@@ -1,0 +1,49 @@
+[gd_scene load_steps=11 format=3 uid="uid://dgch1bac137kd"]
+
+[ext_resource type="Script" path="res://Level.gd" id="1_utbf2"]
+[ext_resource type="Script" path="res://MeshInstance3D.gd" id="2_g8v27"]
+[ext_resource type="Texture2D" uid="uid://kuttplc1qpor" path="res://textures/asphat-road-texture-gray-color.jpg" id="2_lmh6k"]
+[ext_resource type="PackedScene" uid="uid://dj0mo4oi5kcyu" path="res://player/Player.tscn" id="4_pt2f3"]
+[ext_resource type="PackedScene" uid="uid://bc4vohsr502af" path="res://pickupables/berries/berries.tscn" id="6_jgcp3"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_oaggw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ap6lm"]
+albedo_texture = ExtResource("2_lmh6k")
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i3p1f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jjt4y"]
+size = Vector3(1, 1, 0.0161276)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xooet"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_utbf2")
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(188.748, 0, 0, 0, 2.47514e-05, 188.748, 0, -188.748, 2.47514e-05, 0, 5.03088e-09, -0.0383644)
+mesh = SubResource("QuadMesh_oaggw")
+surface_material_override/0 = SubResource("StandardMaterial3D_ap6lm")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+physics_material_override = SubResource("PhysicsMaterial_i3p1f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.61139e-10, -0.00580428)
+shape = SubResource("BoxShape3D_jjt4y")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("4_pt2f3")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.26272, 6.97309, 0)
+light_energy = 10.0
+omni_range = 20.3557
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08029, 0)
+mesh = SubResource("CylinderMesh_xooet")
+script = ExtResource("2_g8v27")
+
+[node name="Berries" parent="." instance=ExtResource("6_jgcp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 0)

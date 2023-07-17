@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwhlcwgtw6bm1"]
+
+[ext_resource type="PackedScene" uid="uid://omrq41q53ogg" path="res://levels/foilage/uploads_files_2242278_AllModels_FBX/Ruins_01.fbx" id="1_jucy3"]
+
+[node name="Portal" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="Ruins_01" parent="." instance=ExtResource("1_jucy3")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -3, 0, 0)
+
+[node name="Ruins_02" parent="." instance=ExtResource("1_jucy3")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.171573, 0, -2.38419e-07)

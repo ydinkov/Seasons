@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bc4vohsr502af"]
+
+[ext_resource type="Texture2D" uid="uid://dnq01aub6f8rl" path="res://pickupables/berries/berry.png" id="1_gcgfr"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pdgth"]
+radius = 0.6
+
+[node name="Berries" type="Area3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_pdgth")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.13398, 0, 0, 0, 0.13398, 0, 0, 0, 0.13398, 0, 0, 0)
+billboard = 1
+texture = ExtResource("1_gcgfr")

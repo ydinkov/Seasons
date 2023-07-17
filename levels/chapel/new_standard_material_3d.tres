@@ -1,0 +1,20 @@
+[gd_resource type="StandardMaterial3D" load_steps=7 format=3 uid="uid://dptqk1krwkc0e"]
+
+[ext_resource type="Texture2D" uid="uid://cf61hpsr8h57o" path="res://levels/chapel/resized_Material.003_Base_Color.png" id="1_sn3um"]
+[ext_resource type="Texture2D" uid="uid://ot8ji8cvvbb1" path="res://levels/chapel/resized_kamen_Ambient_occlusion.png" id="2_657ay"]
+[ext_resource type="Texture2D" uid="uid://dyvs3vp5kl81w" path="res://levels/chapel/resized_Material.003_Height.png" id="3_tb5v5"]
+[ext_resource type="Texture2D" uid="uid://cucd0fg2ter4o" path="res://levels/chapel/resized_Material.003_Metallic.png" id="4_f4ksn"]
+[ext_resource type="Texture2D" uid="uid://dofjasdpu85yp" path="res://levels/chapel/resized_Material.003_Normal.png" id="5_55d3k"]
+[ext_resource type="Texture2D" uid="uid://bme7a1sc4dm20" path="res://levels/chapel/resized_Material.003_Roughness.png" id="6_atc6f"]
+
+[resource]
+albedo_texture = ExtResource("1_sn3um")
+metallic = 1.0
+metallic_texture = ExtResource("4_f4ksn")
+roughness_texture = ExtResource("6_atc6f")
+normal_enabled = true
+normal_texture = ExtResource("5_55d3k")
+ao_enabled = true
+ao_texture = ExtResource("2_657ay")
+heightmap_enabled = true
+heightmap_texture = ExtResource("3_tb5v5")

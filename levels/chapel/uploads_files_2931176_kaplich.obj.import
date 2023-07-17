@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://4fret21ef0tg"
+path="res://.godot/imported/uploads_files_2931176_kaplich.obj-61069cf22c3f402d2641be2b01bd69a1.mesh"
+
+[deps]
+
+files=["res://.godot/imported/uploads_files_2931176_kaplich.obj-61069cf22c3f402d2641be2b01bd69a1.mesh"]
+
+source_file="res://levels/chapel/uploads_files_2931176_kaplich.obj"
+dest_files=["res://.godot/imported/uploads_files_2931176_kaplich.obj-61069cf22c3f402d2641be2b01bd69a1.mesh", "res://.godot/imported/uploads_files_2931176_kaplich.obj-61069cf22c3f402d2641be2b01bd69a1.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
