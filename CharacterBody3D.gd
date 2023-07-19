@@ -1,10 +1,12 @@
 extends CharacterBody3D
 
 var speed = 10.0
+var can_teleport = true;
 
 func _physics_process(delta):
 	handle_input2()
 	handle_turning()
+	velocity.y += -100 * delta
 	move_and_slide()
 	pass
 	#$Camera3D.global_rotation_degrees = Vector3(-35,0,0)

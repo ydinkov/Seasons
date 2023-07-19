@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bc2p6gxb6ljsm"]
+
+[ext_resource type="Script" path="res://levels/Portal.gd" id="1_1kqn6"]
+[ext_resource type="Texture2D" uid="uid://5kpwittmwani" path="res://levels/Seasons.png" id="1_uwdj8"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_i7scb"]
+
+[node name="Portal" type="Area3D"]
+script = ExtResource("1_1kqn6")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 0, 1, -1, 4.37114e-08, -4.37114e-08, 0.633417, 0, 0)
+texture = ExtResource("1_uwdj8")
+hframes = 2
+vframes = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_i7scb")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

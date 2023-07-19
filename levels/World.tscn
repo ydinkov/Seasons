@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://d0xwn420fej48"]
+
+[ext_resource type="PackedScene" uid="uid://dm4knx885gs4x" path="res://levels/levels/Winter.tscn" id="1_6ukpp"]
+[ext_resource type="PackedScene" uid="uid://bc2p6gxb6ljsm" path="res://levels/Portal.tscn" id="2_v6won"]
+[ext_resource type="PackedScene" uid="uid://dai25paaui55w" path="res://levels/levels/Fall.tscn" id="2_vws77"]
+[ext_resource type="PackedScene" uid="uid://bjwtx55de5njs" path="res://levels/levels/Summer.tscn" id="3_y8g4o"]
+[ext_resource type="PackedScene" uid="uid://wig1pov41fvc" path="res://levels/levels/Spring.tscn" id="4_rfv43"]
+[ext_resource type="PackedScene" uid="uid://dj0mo4oi5kcyu" path="res://player/Player.tscn" id="5_086np"]
+
+[node name="World" type="Node3D"]
+
+[node name="Winter" parent="." instance=ExtResource("1_6ukpp")]
+
+[node name="ToSummer" parent="Winter" instance=ExtResource("2_v6won")]
+transform = Transform3D(1.85674, 0, -1.96023, 0, 2.7, 0, 1.96023, 0, 1.85674, -72, 0.843463, 77.6621)
+teleport_distance = -400
+
+[node name="ToSpring" parent="Winter" instance=ExtResource("2_v6won")]
+transform = Transform3D(-1.96023, 0, -1.85674, 0, 2.7, 0, 1.85674, 0, -1.96023, -76.4819, 0.843463, 76.9292)
+teleport_distance = -600
+frame = 2
+
+[node name="Fall" parent="." instance=ExtResource("2_vws77")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -200, 0)
+
+[node name="ToSpring" parent="Fall" instance=ExtResource("2_v6won")]
+transform = Transform3D(1.85674, 0, -1.96023, 0, 2.7, 0, 1.96023, 0, 1.85674, -72, 0.794525, 77.6621)
+teleport_distance = -600
+frame = 2
+
+[node name="ToSummer" parent="Fall" instance=ExtResource("2_v6won")]
+transform = Transform3D(-1.96023, 0, -1.85674, 0, 2.7, 0, 1.85674, 0, -1.96023, -76.4819, 0.794525, 76.9292)
+teleport_distance = -400
+
+[node name="Summer" parent="." instance=ExtResource("3_y8g4o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -400, 0)
+
+[node name="ToWinter" parent="Summer" instance=ExtResource("2_v6won")]
+transform = Transform3D(1.85674, 0, -1.96023, 0, 2.7, 0, 1.96023, 0, 1.85674, -72, 1, 77.6621)
+frame = 3
+
+[node name="ToFall" parent="Summer" instance=ExtResource("2_v6won")]
+transform = Transform3D(-1.96023, 0, -1.85674, 0, 2.7, 0, 1.85674, 0, -1.96023, -76.4819, 1, 76.9292)
+teleport_distance = -200
+frame = 1
+
+[node name="Spring" parent="." instance=ExtResource("4_rfv43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -600, 0)
+
+[node name="ToFall" parent="Spring" instance=ExtResource("2_v6won")]
+transform = Transform3D(1.85674, 0, -1.96023, 0, 2.7, 0, 1.96023, 0, 1.85674, -72, 1, 77.6621)
+teleport_distance = -200
+frame = 1
+
+[node name="ToWinter" parent="Spring" instance=ExtResource("2_v6won")]
+transform = Transform3D(-1.96023, 0, -1.85674, 0, 2.7, 0, 1.85674, 0, -1.96023, -76.4819, 1, 76.9292)
+frame = 3
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.27998, -0.342627, 0.896782, -1.49012e-08, 0.934142, 0.356901, -0.960006, -0.0999251, 0.261541, 19, 76, 0)
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("5_086np")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 4.03068, 17)
