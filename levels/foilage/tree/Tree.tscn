@@ -1,0 +1,93 @@
+[gd_scene load_steps=9 format=3 uid="uid://qxf61662u732"]
+
+[ext_resource type="ArrayMesh" uid="uid://h7872bmq1tue" path="res://levels/foilage/tree/tree_bottom.obj" id="1_tk7c6"]
+[ext_resource type="ArrayMesh" uid="uid://5vw3a2wdpetb" path="res://levels/foilage/tree/tree_top.obj" id="2_3pmys"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vuxva"]
+albedo_color = Color(0.211765, 0.168627, 0.0901961, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2gona"]
+albedo_color = Color(0.211765, 0.168627, 0.0901961, 1)
+
+[sub_resource type="Animation" id="Animation_7d6oj"]
+resource_name = "fall"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Top:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.390823, 1.95983, 0), Vector3(-0.459708, 2.95745, 0), Vector3(-0.442099, 1.95761, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Top:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -1.50186), Vector3(0, 0, -1.50186), Vector3(0, 0, -1.55319)]
+}
+
+[sub_resource type="Animation" id="Animation_34c7t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Top:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Top:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pi8hw"]
+_data = {
+"RESET": SubResource("Animation_34c7t"),
+"fall": SubResource("Animation_7d6oj")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wjk02"]
+radius = 7.0
+
+[node name="Tree" type="Node3D"]
+
+[node name="Bottom" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_tk7c6")
+surface_material_override/0 = SubResource("StandardMaterial3D_vuxva")
+
+[node name="Top" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_3pmys")
+surface_material_override/0 = SubResource("StandardMaterial3D_2gona")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pi8hw")
+}
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_wjk02")

@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://drxkc7tabuvgi"]
+
+[ext_resource type="PackedScene" uid="uid://w7a33exvnvfr" path="res://levels/foilage/uploads_files_2242278_AllModels_FBX/Crystal_01.fbx" id="1_yxj7x"]
+[ext_resource type="ArrayMesh" uid="uid://nxmpn2mwa73f" path="res://player/sword.obj" id="2_67aj4"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_eomu6"]
+radius = 0.6
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qvfm5"]
+radius = 1.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1hu1l"]
+metallic = 1.0
+roughness = 0.25
+
+[node name="Crystal" type="Node3D"]
+
+[node name="Crystal_01" parent="." instance=ExtResource("1_yxj7x")]
+transform = Transform3D(5.32175, 0.570626, 5.47428, -2.14876, 7.22586, 1.33569, -5.06717, -2.46487, 5.18291, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Crystal_01"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Crystal_01/StaticBody3D"]
+transform = Transform3D(0.999999, -7.45058e-08, -1.86265e-09, 1.49012e-08, 1, 6.47269e-08, 3.1665e-08, -6.0536e-08, 1, 7.62939e-06, 0.647879, -1.90735e-06)
+shape = SubResource("CylinderShape3D_eomu6")
+
+[node name="Area3D" type="Area3D" parent="Crystal_01"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Crystal_01/Area3D"]
+shape = SubResource("SphereShape3D_qvfm5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0969284, 0.384271, -0.0542285, 0.213677, -0.00618657, 0.338089, 0.323955, -0.110894, -0.206774, -0.716027, 6.38086, -0.581778)
+mesh = ExtResource("2_67aj4")
+surface_material_override/0 = SubResource("StandardMaterial3D_1hu1l")

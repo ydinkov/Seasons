@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://0hi1003yaeqv"]
+
+[ext_resource type="ArrayMesh" uid="uid://b02bjtd3r40fv" path="res://levels/chapel/broken_chapel2.obj" id="1_dqnx7"]
+[ext_resource type="ArrayMesh" uid="uid://4fret21ef0tg" path="res://levels/chapel/uploads_files_2931176_kaplich.obj" id="2_ylnue"]
+
+[node name="Chapel" type="Node3D"]
+
+[node name="Top" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = ExtResource("1_dqnx7")
+
+[node name="Bottom" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 8.74228e-08, -1, 0)
+mesh = ExtResource("2_ylnue")

@@ -1,7 +1,6 @@
-[gd_scene load_steps=74 format=3 uid="uid://wig1pov41fvc"]
+[gd_scene load_steps=72 format=3 uid="uid://wig1pov41fvc"]
 
 [ext_resource type="ArrayMesh" uid="uid://fcqkch4bemy3" path="res://levels/floor.obj" id="1_1sbeb"]
-[ext_resource type="PackedScene" uid="uid://w7a33exvnvfr" path="res://levels/foilage/uploads_files_2242278_AllModels_FBX/Crystal_01.fbx" id="2_0pll0"]
 [ext_resource type="PackedScene" uid="uid://dpaf6ns2kcb5l" path="res://levels/foilage/uploads_files_2242278_AllModels_FBX/Reeds_01.fbx" id="3_p68en"]
 [ext_resource type="PackedScene" uid="uid://cq4oyl8o4dl50" path="res://levels/foilage/uploads_files_2242278_AllModels_FBX/Tree_09.fbx" id="4_5d123"]
 [ext_resource type="Material" uid="uid://dptqk1krwkc0e" path="res://levels/chapel/new_standard_material_3d.tres" id="6_uycw0"]
@@ -66,9 +65,6 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kg1ey"]
 albedo_color = Color(0.270588, 0.403922, 0.337255, 1)
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_dgfc1"]
-radius = 0.6
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_qwx36"]
 size = Vector3(1, 1, 12)
 
@@ -105,15 +101,6 @@ radius = 3.0
 transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 0, 0, 0)
 mesh = ExtResource("1_1sbeb")
 surface_material_override/0 = SubResource("StandardMaterial3D_kg1ey")
-
-[node name="Crystal_01" parent="landscape" instance=ExtResource("2_0pll0")]
-transform = Transform3D(5.32175, 0.570626, 5.47428, -2.14876, 7.22586, 1.33569, -5.06717, -2.46487, 5.18291, -267.65, -0.156302, 84.6518)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="landscape/Crystal_01"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="landscape/Crystal_01/StaticBody3D"]
-transform = Transform3D(0.999999, -7.45058e-08, -1.86265e-09, 1.49012e-08, 1, 6.47269e-08, 3.1665e-08, -6.0536e-08, 1, 7.62939e-06, 0.647879, -1.90735e-06)
-shape = SubResource("CylinderShape3D_dgfc1")
 
 [node name="Reeds" type="Node3D" parent="landscape"]
 
