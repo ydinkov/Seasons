@@ -54,18 +54,17 @@ scale = Vector2(0.0629883, 0.0629883)
 texture = ExtResource("2_m8co5")
 
 [node name="Axe" type="Sprite2D" parent="UI"]
+visible = false
 position = Vector2(82.375, 189.5)
 scale = Vector2(0.0864258, 0.0864258)
 texture = ExtResource("3_n5v4a")
 
 [node name="Dynamite" type="Sprite2D" parent="UI"]
-visible = false
 position = Vector2(83.375, 282.5)
 scale = Vector2(0.078125, 0.078125)
 texture = ExtResource("4_m81ev")
 
 [node name="Matches" type="Sprite2D" parent="UI"]
-visible = false
 position = Vector2(96.375, 399.5)
 scale = Vector2(0.11084, 0.11084)
 texture = ExtResource("5_d7bt8")

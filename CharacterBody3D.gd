@@ -21,6 +21,14 @@ func _physics_process(delta):
 			$UI/Axe.visible = true
 		elif interactable.name == "Sword":
 			interactable.queue_free()
+			interactable.get_parent().get_parent().get_node("Winter/Sword").queue_free
+			interactable.get_parent().get_parent().get_node("Fall/Sword").queue_free		
+		
+			if interactable.get_parent().name =="Summer":
+				interactable.get_parent().get_parent().get_node("Summer/Sword").queue_free
+			if interactable.get_parent().name =="Spring":
+				interactable.get_parent().get_parent().get_node("Spring/Sword").queue_free
+				interactable.get_parent().get_parent().get_node("Spring/Sword").queue_free
 			$UI/Sword.visible = true
 		elif interactable.name == "Tree":
 			if $UI/Axe.visible:
@@ -31,6 +39,29 @@ func _physics_process(delta):
 				if interactable.get_parent().get_parent().name =="Spring":
 					interactable.get_parent().get_parent().get_parent().get_node("Fall/Chapel").fixed = true
 					interactable.get_parent().get_parent().get_parent().get_node("Summer/Chapel").fixed = true
+		elif interactable.name == "Crystal":
+			if $UI/Dynamite.visible and $UI/Matches.visible:
+				$UI/Dynamite.visible = false				
+				if interactable.get_parent().name =="Winter":
+					interactable.get_parent().get_parent().get_node("Winter/Crystal/AnimationPlayer").play("fall")
+				if interactable.get_parent().name =="Fall":
+					interactable.get_parent().get_parent().get_node("Winter/Crystal/AnimationPlayer").play("fall")
+					interactable.get_parent().get_parent().get_node("Fall/Crystal/AnimationPlayer").play("fall")
+				if interactable.get_parent().name =="Summer":
+					interactable.get_parent().get_parent().get_node("Winter/Sword").visible = true
+					interactable.get_parent().get_parent().get_node("Winter/Crystal").visible = false
+					interactable.get_parent().get_parent().get_node("Fall/Crystal/AnimationPlayer").play("fall")
+					interactable.get_parent().get_parent().get_node("Summer/Crystal/AnimationPlayer").play("fall")
+				if interactable.get_parent().name =="Spring":
+					interactable.get_parent().get_parent().get_node("Winter/Sword").visible = true
+					interactable.get_parent().get_parent().get_node("Fall/Sword").visible = true
+					interactable.get_parent().get_parent().get_node("Winter/Crystal").visible = false
+					interactable.get_parent().get_parent().get_node("Fall/Crystal").visible = false					
+					interactable.get_parent().get_parent().get_node("Summer/Crystal/AnimationPlayer").play("fall")
+					interactable.get_parent().get_parent().get_node("Spring/Crystal/AnimationPlayer").play("fall")
+					pass
+				#	interactable.get_parent().get_parent().get_parent().get_node("Fall/Chapel").fixed = true
+				#	interactable.get_parent().get_parent().get_parent().get_node("Summer/Chapel").fixed = true
 				
 				
 	pass

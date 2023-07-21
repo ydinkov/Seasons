@@ -1,10 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://drxkc7tabuvgi"]
+[gd_scene load_steps=9 format=3 uid="uid://drxkc7tabuvgi"]
 
 [ext_resource type="PackedScene" uid="uid://w7a33exvnvfr" path="res://levels/foilage/uploads_files_2242278_AllModels_FBX/Crystal_01.fbx" id="1_yxj7x"]
 [ext_resource type="ArrayMesh" uid="uid://nxmpn2mwa73f" path="res://player/sword.obj" id="2_67aj4"]
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_eomu6"]
-radius = 0.6
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qvfm5"]
 radius = 1.5
@@ -13,23 +10,94 @@ radius = 1.5
 metallic = 1.0
 roughness = 0.25
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_eomu6"]
+radius = 0.6
+
+[sub_resource type="Animation" id="Animation_1kkyg"]
+resource_name = "fall"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Crystal_01:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(6, -2.40397, -14.6397)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Crystal_01:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.175359, 0.812731, -0.289043), Vector3(0.541189, 1.19281, -1.53137)]
+}
+
+[sub_resource type="Animation" id="Animation_du2r4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Crystal_01:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Crystal_01:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.175359, 0.812731, -0.289043)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_avbgl"]
+_data = {
+"RESET": SubResource("Animation_du2r4"),
+"fall": SubResource("Animation_1kkyg")
+}
+
 [node name="Crystal" type="Node3D"]
 
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(7.656, 0, 0, 0, 7.656, 0, 0, 0, 7.656, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_qvfm5")
+
 [node name="Crystal_01" parent="." instance=ExtResource("1_yxj7x")]
-transform = Transform3D(5.32175, 0.570626, 5.47428, -2.14876, 7.22586, 1.33569, -5.06717, -2.46487, 5.18291, 0, 0, 0)
+transform = Transform3D(5.32175, 0.570626, 5.47428, -2.14876, 7.22586, 1.33568, -5.06717, -2.46487, 5.18291, 0, 0, 0)
+
+[node name="Sword" type="MeshInstance3D" parent="Crystal_01"]
+transform = Transform3D(-0.0270385, 0.0447024, 0.000557814, 0.0136622, 0.00764164, 0.0498464, 0.0425672, 0.0259423, -0.0156442, -0.248633, 0.804115, 0.0270881)
+mesh = ExtResource("2_67aj4")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1hu1l")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Crystal_01"]
+transform = Transform3D(1, -2.98023e-08, -7.45058e-09, 0, 1, 2.98023e-08, 1.49012e-08, 0, 1, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Crystal_01/StaticBody3D"]
 transform = Transform3D(0.999999, -7.45058e-08, -1.86265e-09, 1.49012e-08, 1, 6.47269e-08, 3.1665e-08, -6.0536e-08, 1, 7.62939e-06, 0.647879, -1.90735e-06)
 shape = SubResource("CylinderShape3D_eomu6")
 
-[node name="Area3D" type="Area3D" parent="Crystal_01"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Crystal_01/Area3D"]
-shape = SubResource("SphereShape3D_qvfm5")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.0969284, 0.384271, -0.0542285, 0.213677, -0.00618657, 0.338089, 0.323955, -0.110894, -0.206774, -0.716027, 6.38086, -0.581778)
-mesh = ExtResource("2_67aj4")
-surface_material_override/0 = SubResource("StandardMaterial3D_1hu1l")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_avbgl")
+}

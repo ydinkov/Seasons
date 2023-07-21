@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1tpdau2jmqhl"]
+
+[ext_resource type="ArrayMesh" uid="uid://nxmpn2mwa73f" path="res://player/sword.obj" id="1_en76k"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v1wg5"]
+radius = 10.2895
+height = 50.2188
+
+[node name="Sword" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_en76k")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 4.01514, 0, 0)
+shape = SubResource("CapsuleShape3D_v1wg5")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d0xwn420fej48"]
+[gd_scene load_steps=14 format=3 uid="uid://d0xwn420fej48"]
 
 [ext_resource type="PackedScene" uid="uid://dm4knx885gs4x" path="res://levels/levels/Winter.tscn" id="1_6ukpp"]
 [ext_resource type="PackedScene" uid="uid://bc2p6gxb6ljsm" path="res://levels/Portal.tscn" id="2_v6won"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dj0mo4oi5kcyu" path="res://player/Player.tscn" id="5_086np"]
 [ext_resource type="PackedScene" uid="uid://0hi1003yaeqv" path="res://levels/chapel/Chapel.tscn" id="5_ijtlk"]
 [ext_resource type="PackedScene" uid="uid://c4gvu6whd7flg" path="res://levels/foilage/uploads_files_2242278_AllModels_FBX/Ax_01.fbx" id="5_l1ex8"]
+[ext_resource type="PackedScene" uid="uid://c1tpdau2jmqhl" path="res://levels/sword/Sword.tscn" id="5_l5qbk"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_euv1d"]
 radius = 0.2
@@ -40,6 +41,10 @@ transform = Transform3D(0.583881, -0.179654, 0.791711, 7.45058e-09, 0.975207, 0.
 [node name="Chapel" parent="Winter" instance=ExtResource("5_ijtlk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62, 0, -41)
 
+[node name="Sword" parent="Winter" instance=ExtResource("5_l5qbk")]
+transform = Transform3D(-1.57361e-08, 0, -0.36, 0, 0.36, 0, 0.36, 0, -1.57361e-08, 21, -10, 143)
+visible = false
+
 [node name="Fall" parent="." instance=ExtResource("2_vws77")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -200, 0)
 
@@ -65,11 +70,15 @@ surface_material_override/0 = SubResource("StandardMaterial3D_nogyf")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Fall/Apple/apple"]
 shape = SubResource("SphereShape3D_kxag1")
 
-[node name="Crystal2" parent="Fall" instance=ExtResource("3_jn4hl")]
+[node name="Crystal" parent="Fall" instance=ExtResource("3_jn4hl")]
 transform = Transform3D(0.583881, -0.179654, 0.791711, 7.45058e-09, 0.975207, 0.221293, -0.811839, -0.129209, 0.569405, 35.7004, -4.21216, 152.689)
 
 [node name="Chapel" parent="Fall" instance=ExtResource("5_ijtlk")]
 transform = Transform3D(1, -1.74846e-07, 0, 1.74846e-07, 1, 0, 0, 0, 1, 62, -1.041, -41)
+
+[node name="Sword" parent="Fall" instance=ExtResource("5_l5qbk")]
+transform = Transform3D(-1.57361e-08, 0, -0.36, 0, 0.36, 0, 0.36, 0, -1.57361e-08, 21, -10, 143)
+visible = false
 
 [node name="Summer" parent="." instance=ExtResource("3_y8g4o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -400, 0)
@@ -94,11 +103,15 @@ shape = SubResource("SphereShape3D_kxag1")
 [node name="Ax_01" parent="Summer/Axe/AxeArea" instance=ExtResource("5_l1ex8")]
 transform = Transform3D(-0.634133, -0.0564521, 0.77116, 0.763355, -0.20454, 0.612742, 0.123143, 0.977229, 0.172799, 0, 0, 0)
 
-[node name="Crystal3" parent="Summer" instance=ExtResource("3_jn4hl")]
+[node name="Crystal" parent="Summer" instance=ExtResource("3_jn4hl")]
 transform = Transform3D(0.583881, -0.179654, 0.791711, 7.45058e-09, 0.975207, 0.221293, -0.811839, -0.129209, 0.569405, 36.5869, -3.40945, 147.367)
 
 [node name="Chapel" parent="Summer" instance=ExtResource("5_ijtlk")]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 62, -1.04907, -41)
+
+[node name="Sword" parent="Summer" instance=ExtResource("5_l5qbk")]
+transform = Transform3D(-1.57361e-08, 0, -0.36, 0, 0.36, 0, 0.36, 0, -1.57361e-08, 21, -10, 143)
+visible = false
 
 [node name="Spring" parent="." instance=ExtResource("4_rfv43")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -600, 0)
@@ -112,12 +125,15 @@ frame = 1
 transform = Transform3D(-1.96023, 0, -1.85674, 0, 2.7, 0, 1.85674, 0, -1.96023, -76.4819, 1, 76.9292)
 frame = 3
 
-[node name="Crystal4" parent="Spring" instance=ExtResource("3_jn4hl")]
+[node name="Crystal" parent="Spring" instance=ExtResource("3_jn4hl")]
 transform = Transform3D(0.583881, -0.179654, 0.791711, 7.45058e-09, 0.975207, 0.221293, -0.811839, -0.129209, 0.569405, 36.9463, -1.95044, 147.625)
 
 [node name="Chapel" parent="Spring" instance=ExtResource("5_ijtlk")]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 62, 0, -41)
-unbroken = true
+
+[node name="Sword" parent="Spring" instance=ExtResource("5_l5qbk")]
+transform = Transform3D(-1.57361e-08, 0, -0.36, 0, 0.36, 0, 0.36, 0, -1.57361e-08, 21, -10, 143)
+visible = false
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.27998, -0.342627, 0.896782, -1.49012e-08, 0.934142, 0.356901, -0.960006, -0.0999251, 0.261541, 19, 76, 0)
