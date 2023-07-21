@@ -1,10 +1,8 @@
-[gd_scene load_steps=72 format=3 uid="uid://wig1pov41fvc"]
+[gd_scene load_steps=68 format=3 uid="uid://wig1pov41fvc"]
 
 [ext_resource type="ArrayMesh" uid="uid://fcqkch4bemy3" path="res://levels/floor.obj" id="1_1sbeb"]
 [ext_resource type="PackedScene" uid="uid://dpaf6ns2kcb5l" path="res://levels/foilage/uploads_files_2242278_AllModels_FBX/Reeds_01.fbx" id="3_p68en"]
 [ext_resource type="PackedScene" uid="uid://cq4oyl8o4dl50" path="res://levels/foilage/uploads_files_2242278_AllModels_FBX/Tree_09.fbx" id="4_5d123"]
-[ext_resource type="Material" uid="uid://dptqk1krwkc0e" path="res://levels/chapel/new_standard_material_3d.tres" id="6_uycw0"]
-[ext_resource type="ArrayMesh" uid="uid://4fret21ef0tg" path="res://levels/chapel/uploads_files_2931176_kaplich.obj" id="7_x6eip"]
 [ext_resource type="PackedScene" uid="uid://b3qg7a7j1dali" path="res://levels/foilage/uploads_files_2242278_AllModels_FBX/House_01.fbx" id="8_2e8sh"]
 [ext_resource type="PackedScene" uid="uid://bwhlcwgtw6bm1" path="res://levels/portal/Portal.tscn" id="9_l04c0"]
 [ext_resource type="PackedScene" uid="uid://ck7m6v2ascr8g" path="res://levels/foilage/uploads_files_2242278_AllModels_FBX/Tile_08.fbx" id="10_pftoj"]
@@ -64,12 +62,6 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kg1ey"]
 albedo_color = Color(0.270588, 0.403922, 0.337255, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_qwx36"]
-size = Vector3(1, 1, 12)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_iidyk"]
-size = Vector3(8, 7, 7)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_68tsw"]
 size = Vector3(12, 3, 0.001)
@@ -151,35 +143,6 @@ transform = Transform3D(4.33013, 0, 2.5, 0, 5, 0, -2.5, 0, 4.33013, -278.927, -6
 
 [node name="Main_Tree" parent="landscape" instance=ExtResource("4_5d123")]
 transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, 0, 0, 0)
-
-[node name="Chapel" type="MeshInstance3D" parent="landscape"]
-transform = Transform3D(-0.564147, 0, -1.91879, 0, 2, 0, 1.91879, 0, -0.564147, 105.266, 0, 149.706)
-material_override = ExtResource("6_uycw0")
-mesh = ExtResource("7_x6eip")
-skeleton = NodePath("../..")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="landscape/Chapel"]
-transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="landscape/Chapel/StaticBody3D"]
-transform = Transform3D(1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, 9.24351, 0.659485, 0.723076)
-shape = SubResource("BoxShape3D_qwx36")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="landscape/Chapel/StaticBody3D"]
-transform = Transform3D(-0.416884, 0, -0.90896, 0, 1, 0, 0.90896, 0, -0.416884, 5.47926, 0.476257, -4.62885)
-shape = SubResource("BoxShape3D_qwx36")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="landscape/Chapel/StaticBody3D"]
-transform = Transform3D(0.152658, 0, -0.988279, 0, 1, 0, 0.988279, 0, 0.152658, -7.28746, 0.476257, -5.40981)
-shape = SubResource("BoxShape3D_qwx36")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="landscape/Chapel/StaticBody3D"]
-transform = Transform3D(0.999878, 0, 0.0156553, 0, 1, 0, -0.0156553, 0, 0.999878, -14.1395, 0.294556, -1.36312)
-shape = SubResource("BoxShape3D_qwx36")
-
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="landscape/Chapel/StaticBody3D"]
-transform = Transform3D(1, 0, 3.8743e-07, 0, 1, 0, -3.8743e-07, 0, 1, -4.57764e-05, 3, 0.640038)
-shape = SubResource("BoxShape3D_iidyk")
 
 [node name="House_01" parent="landscape" instance=ExtResource("8_2e8sh")]
 transform = Transform3D(1.41421, 0, -1.41421, 0, 2, 0, 1.41421, 0, 1.41421, 69.5466, 0, -142.917)

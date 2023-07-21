@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://bjwtx55de5njs"]
+[gd_scene load_steps=67 format=3 uid="uid://bjwtx55de5njs"]
 
 [ext_resource type="ArrayMesh" uid="uid://fcqkch4bemy3" path="res://levels/floor.obj" id="1_4aj3n"]
 [ext_resource type="PackedScene" uid="uid://dpaf6ns2kcb5l" path="res://levels/foilage/uploads_files_2242278_AllModels_FBX/Reeds_01.fbx" id="3_t37yo"]
@@ -51,7 +51,6 @@
 [ext_resource type="PackedScene" uid="uid://b5hqqppiuwt3o" path="res://levels/foilage/uploads_files_2242278_AllModels_FBX/Tree_27.fbx" id="53_1p413"]
 [ext_resource type="PackedScene" uid="uid://do6ti3d46wbp1" path="res://levels/foilage/uploads_files_2242278_AllModels_FBX/Tree_28.fbx" id="54_pc7iy"]
 [ext_resource type="PackedScene" uid="uid://cxe0qufdwkogg" path="res://levels/foilage/uploads_files_2242278_AllModels_FBX/Tree_29.fbx" id="55_2lps2"]
-[ext_resource type="PackedScene" uid="uid://0hi1003yaeqv" path="res://levels/chapel/Chapel.tscn" id="55_32p2b"]
 [ext_resource type="PackedScene" uid="uid://buvu22xqrbjq5" path="res://levels/foilage/uploads_files_2242278_AllModels_FBX/Tree_30.fbx" id="56_lkn5y"]
 [ext_resource type="PackedScene" uid="uid://b6jpd8vfmivy3" path="res://levels/foilage/uploads_files_2242278_AllModels_FBX/Tree_31.fbx" id="57_t1bmx"]
 [ext_resource type="PackedScene" uid="uid://yd5cl232wtpu" path="res://levels/foilage/uploads_files_2242278_AllModels_FBX/Tree_32.fbx" id="58_6hdi5"]
@@ -2366,9 +2365,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 18)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="landscape/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_nvmj6")
-
-[node name="Chapel2" parent="landscape" instance=ExtResource("55_32p2b")]
-transform = Transform3D(-0.95, 0, -1.64545, 0, 1.9, 0, 1.64545, 0, -0.95, 87.2434, 0, 131.68)
 
 [node name="water" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 99, -6, 96)
