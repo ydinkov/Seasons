@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://qxf61662u732"]
+[gd_scene load_steps=10 format=3 uid="uid://qxf61662u732"]
 
 [ext_resource type="ArrayMesh" uid="uid://h7872bmq1tue" path="res://levels/foilage/tree/tree_bottom.obj" id="1_tk7c6"]
 [ext_resource type="ArrayMesh" uid="uid://5vw3a2wdpetb" path="res://levels/foilage/tree/tree_top.obj" id="2_3pmys"]
@@ -69,8 +69,13 @@ _data = {
 "fall": SubResource("Animation_7d6oj")
 }
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_wjk02"]
-radius = 7.0
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_cs1jf"]
+height = 6.0
+radius = 5.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_oghbe"]
+height = 6.0
+radius = 1.6
 
 [node name="Tree" type="Node3D"]
 
@@ -88,6 +93,14 @@ libraries = {
 }
 
 [node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 6, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("SphereShape3D_wjk02")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.63933, 0)
+shape = SubResource("CylinderShape3D_cs1jf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, 0)
+shape = SubResource("CylinderShape3D_oghbe")

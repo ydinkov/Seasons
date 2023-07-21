@@ -4,6 +4,8 @@ var speed = 40.0
 var can_teleport = true;
 var interactable : Node3D
 
+
+
 func _physics_process(delta):
 	handle_input2()
 	handle_turning()
@@ -23,7 +25,14 @@ func _physics_process(delta):
 		elif interactable.name == "Tree":
 			if $UI/Axe.visible:
 				interactable.get_node("AnimationPlayer").play("fall")
-			
+				interactable.get_parent().get_parent().get_parent().get_node("Winter/Chapel").fixed = true
+				if interactable.get_parent().get_parent().name =="Summer":
+					interactable.get_parent().get_parent().get_parent().get_node("Fall/Chapel").fixed = true
+				if interactable.get_parent().get_parent().name =="Spring":
+					interactable.get_parent().get_parent().get_parent().get_node("Fall/Chapel").fixed = true
+					interactable.get_parent().get_parent().get_parent().get_node("Summer/Chapel").fixed = true
+				
+				
 	pass
 	#$Camera3D.global_rotation_degrees = Vector3(-35,0,0)
 

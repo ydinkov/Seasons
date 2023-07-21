@@ -1,8 +1,10 @@
-[gd_scene load_steps=41 format=3 uid="uid://0hi1003yaeqv"]
+[gd_scene load_steps=43 format=3 uid="uid://0hi1003yaeqv"]
 
+[ext_resource type="Script" path="res://levels/chapel/Chapel.gd" id="1_33b2x"]
 [ext_resource type="ArrayMesh" uid="uid://b02bjtd3r40fv" path="res://levels/chapel/broken_chapel2.obj" id="1_dqnx7"]
 [ext_resource type="Texture2D" uid="uid://cf61hpsr8h57o" path="res://levels/chapel/resized_Material.003_Base_Color.png" id="2_cdvts"]
 [ext_resource type="ArrayMesh" uid="uid://4fret21ef0tg" path="res://levels/chapel/uploads_files_2931176_kaplich.obj" id="2_ylnue"]
+[ext_resource type="PackedScene" uid="uid://qxf61662u732" path="res://levels/foilage/tree/Tree.tscn" id="4_dpw8w"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fdwgc"]
 albedo_texture = ExtResource("2_cdvts")
@@ -116,6 +118,7 @@ albedo_texture = ExtResource("2_cdvts")
 albedo_texture = ExtResource("2_cdvts")
 
 [node name="Chapel" type="Node3D"]
+script = ExtResource("1_33b2x")
 
 [node name="Top" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -161,3 +164,6 @@ surface_material_override/30 = SubResource("StandardMaterial3D_kild3")
 surface_material_override/31 = SubResource("StandardMaterial3D_2k2oj")
 surface_material_override/32 = SubResource("StandardMaterial3D_ry5ui")
 surface_material_override/33 = SubResource("StandardMaterial3D_gsel5")
+
+[node name="Tree" parent="." instance=ExtResource("4_dpw8w")]
+transform = Transform3D(-1, 8.9407e-08, 0, -8.9407e-08, -1, 0, 0, 0, 1, -17, -1, 0)
