@@ -1,13 +1,29 @@
 extends CharacterBody3D
 
-var speed = 10.0
+var speed = 40.0
 var can_teleport = true;
+var interactable : Node3D
 
 func _physics_process(delta):
 	handle_input2()
 	handle_turning()
 	velocity.y += -100 * delta
 	move_and_slide()
+	
+	if Input.is_action_pressed("interact") and interactable != null:
+		if interactable.name == "Apple":
+			interactable.queue_free()
+			$UI/Apple.visible = true
+		elif interactable.name == "Axe":
+			interactable.queue_free()
+			$UI/Axe.visible = true
+		elif interactable.name == "Sword":
+			interactable.queue_free()
+			$UI/Sword.visible = true
+		elif interactable.name == "Tree":
+			if $UI/Axe.visible:
+				interactable.get_node("AnimationPlayer").play("fall")
+			
 	pass
 	#$Camera3D.global_rotation_degrees = Vector3(-35,0,0)
 
@@ -39,8 +55,12 @@ func handle_input2():
 		if Input.is_action_pressed("ui_up"):
 			direction.z -= 1
 		self.velocity = direction.normalized() * speed
-		
-		
-	# Move the object
-	
 
+func _on_area_3d_area_entered(area):
+	interactable = area.get_parent()
+	$UI/Label.text = "[X] to interact with " + interactable.name
+
+
+func _on_area_3d_area_exited(area):	
+	interactable = null
+	$UI/Label.text = ""

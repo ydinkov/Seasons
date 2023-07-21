@@ -13,10 +13,11 @@ extends Area3D
 func _on_body_entered(body : CharacterBody3D):
 	if body.can_teleport == false: return
 	body.can_teleport = false
-	body.global_position.y = teleport_distance
+	body.global_position.y = teleport_distance +5
 	pass # Replace with function body.
 
 
 func _on_body_exited(body):
-	body.can_teleport = true
+	if body is CharacterBody3D:
+		body.can_teleport = true
 	pass # Replace with function body.

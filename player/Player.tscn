@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dj0mo4oi5kcyu"]
+[gd_scene load_steps=11 format=3 uid="uid://dj0mo4oi5kcyu"]
 
 [ext_resource type="Script" path="res://CharacterBody3D.gd" id="1_uh8mb"]
 [ext_resource type="Texture2D" uid="uid://dinieqq5mkmn" path="res://player/apple.png" id="2_m8co5"]
@@ -12,6 +12,9 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_64q0q"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_0gmrv"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_t31hk"]
+radius = 2.369
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03068, 0)
@@ -42,10 +45,10 @@ offset_left = 467.0
 offset_top = 33.0
 offset_right = 721.0
 offset_bottom = 63.0
-text = "Pick up"
 horizontal_alignment = 1
 
 [node name="Apple" type="Sprite2D" parent="UI"]
+visible = false
 position = Vector2(77.125, 83.25)
 scale = Vector2(0.0629883, 0.0629883)
 texture = ExtResource("2_m8co5")
@@ -56,16 +59,27 @@ scale = Vector2(0.0864258, 0.0864258)
 texture = ExtResource("3_n5v4a")
 
 [node name="Dynamite" type="Sprite2D" parent="UI"]
+visible = false
 position = Vector2(83.375, 282.5)
 scale = Vector2(0.078125, 0.078125)
 texture = ExtResource("4_m81ev")
 
 [node name="Matches" type="Sprite2D" parent="UI"]
+visible = false
 position = Vector2(96.375, 399.5)
 scale = Vector2(0.11084, 0.11084)
 texture = ExtResource("5_d7bt8")
 
 [node name="Sword" type="Sprite2D" parent="UI"]
+visible = false
 position = Vector2(84.375, 502.5)
 scale = Vector2(0.104248, 0.104248)
 texture = ExtResource("6_8jumc")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_t31hk")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]
