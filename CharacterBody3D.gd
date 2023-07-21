@@ -22,13 +22,7 @@ func _physics_process(delta):
 		elif interactable.name == "Sword":
 			interactable.queue_free()
 			interactable.get_parent().get_parent().get_node("Winter/Sword").queue_free
-			interactable.get_parent().get_parent().get_node("Fall/Sword").queue_free		
-		
-			if interactable.get_parent().name =="Summer":
-				interactable.get_parent().get_parent().get_node("Summer/Sword").queue_free
-			if interactable.get_parent().name =="Spring":
-				interactable.get_parent().get_parent().get_node("Spring/Sword").queue_free
-				interactable.get_parent().get_parent().get_node("Spring/Sword").queue_free
+			interactable.get_parent().get_parent().get_node("Fall/Sword").queue_free	
 			$UI/Sword.visible = true
 		elif interactable.name == "Tree":
 			if $UI/Axe.visible:
@@ -104,3 +98,16 @@ func _on_area_3d_area_entered(area):
 func _on_area_3d_area_exited(area):	
 	interactable = null
 	$UI/Label.text = ""
+
+
+func _on_spring_music_finished():
+	$SpringMusic.play()
+
+func _on_summer_music_finished():
+	$SummerMusic.play()
+
+func _on_fall_music_finished():
+	$FallMusic.play()
+
+func _on_winter_music_finished():
+	$WinterMusic.play()
