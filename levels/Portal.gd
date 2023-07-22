@@ -3,6 +3,7 @@ extends Area3D
 
 @export var teleport_distance : int = 0
 
+@export_enum("Spring","Summer","Fall","Winter") var ToSeason :String
 
 @export_range(0, 3) var frame: int = 0:
 	get:
@@ -14,6 +15,7 @@ func _on_body_entered(body : CharacterBody3D):
 	if body.can_teleport == false: return
 	body.can_teleport = false
 	body.global_position.y = teleport_distance + 5
+	body.switch_music_to(ToSeason)
 	pass # Replace with function body.
 
 

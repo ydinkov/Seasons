@@ -29,10 +29,12 @@ radius = 1.0
 [node name="ToSummer" parent="Winter" instance=ExtResource("2_v6won")]
 transform = Transform3D(1.85674, 0, -1.96023, 0, 2.7, 0, 1.96023, 0, 1.85674, -72, 0.843463, 77.6621)
 teleport_distance = -400
+ToSeason = "Summer"
 
 [node name="ToSpring" parent="Winter" instance=ExtResource("2_v6won")]
 transform = Transform3D(-1.96023, 0, -1.85674, 0, 2.7, 0, 1.85674, 0, -1.96023, -76.4819, 0.843463, 76.9292)
 teleport_distance = -600
+ToSeason = "Spring"
 frame = 2
 
 [node name="Crystal" parent="Winter" instance=ExtResource("3_jn4hl")]
@@ -51,11 +53,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -200, 0)
 [node name="ToSpring" parent="Fall" instance=ExtResource("2_v6won")]
 transform = Transform3D(1.85674, 0, -1.96023, 0, 2.7, 0, 1.96023, 0, 1.85674, -72, 0.794525, 77.6621)
 teleport_distance = -600
+ToSeason = "Spring"
 frame = 2
 
 [node name="ToSummer" parent="Fall" instance=ExtResource("2_v6won")]
 transform = Transform3D(-1.96023, 0, -1.85674, 0, 2.7, 0, 1.85674, 0, -1.96023, -76.4819, 0.794525, 76.9292)
 teleport_distance = -400
+ToSeason = "Summer"
 
 [node name="Apple" type="Node3D" parent="Fall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.139938, 8)
@@ -85,11 +89,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -400, 0)
 
 [node name="ToWinter" parent="Summer" instance=ExtResource("2_v6won")]
 transform = Transform3D(1.85674, 0, -1.96023, 0, 2.7, 0, 1.96023, 0, 1.85674, -72, 1, 77.6621)
+ToSeason = "Winter"
 frame = 3
 
 [node name="ToFall" parent="Summer" instance=ExtResource("2_v6won")]
 transform = Transform3D(-1.96023, 0, -1.85674, 0, 2.7, 0, 1.85674, 0, -1.96023, -76.4819, 1, 76.9292)
 teleport_distance = -200
+ToSeason = "Fall"
 frame = 1
 
 [node name="Axe" type="Node3D" parent="Summer"]
@@ -119,10 +125,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -600, 0)
 [node name="ToFall" parent="Spring" instance=ExtResource("2_v6won")]
 transform = Transform3D(1.85674, 0, -1.96023, 0, 2.7, 0, 1.96023, 0, 1.85674, -72, 1, 77.6621)
 teleport_distance = -200
+ToSeason = "Fall"
 frame = 1
 
 [node name="ToWinter" parent="Spring" instance=ExtResource("2_v6won")]
 transform = Transform3D(-1.96023, 0, -1.85674, 0, 2.7, 0, 1.85674, 0, -1.96023, -76.4819, 1, 76.9292)
+ToSeason = "Winter"
 frame = 3
 
 [node name="Crystal" parent="Spring" instance=ExtResource("3_jn4hl")]

@@ -16,13 +16,23 @@ func _physics_process(delta):
 		if interactable.name == "Apple":
 			interactable.queue_free()
 			$UI/Apple.visible = true
+			$Progress.play()
 		elif interactable.name == "Axe":
 			interactable.queue_free()
 			$UI/Axe.visible = true
+			$Progress.play()
 		elif interactable.name == "Sword":
 			interactable.queue_free()
 			interactable.get_parent().get_parent().get_node("Winter/Sword").queue_free
 			interactable.get_parent().get_parent().get_node("Fall/Sword").queue_free	
+			$UI/ColorRect.visible
+			$Progress.play()			
+			$WinterMusic.stop()
+			$FallMusic.stop()
+			$SummerMusic.stop()
+			$SpringMusic.stop()
+			$UI/ColorRect/Credits.play();			
+			$UI/ColorRect/AnimationPlayer.play("scroll_up")
 			$UI/Sword.visible = true
 		elif interactable.name == "Tree":
 			if $UI/Axe.visible:
@@ -111,3 +121,15 @@ func _on_fall_music_finished():
 
 func _on_winter_music_finished():
 	$WinterMusic.play()
+
+func switch_music_to(season):	
+	$WinterMusic.stop()
+	$FallMusic.stop()
+	$SummerMusic.stop()
+	$SpringMusic.stop()
+	get_node(season+"Music").play()
+	
+
+func _on_rich_text_label_finished():
+	get_tree().quit() # 
+	pass # Replace with function body.
