@@ -24,3 +24,18 @@ extends Node3D
 		else: rotation_degrees.z=0
 		$Tree.visible = value
 		$Tree/StaticBody3D/CollisionShape3D.disabled = value
+
+
+@export var lit: bool = false:
+	get:
+		return $Bottom/OmniLight3D.visible
+	set(value):
+		$Bottom/OmniLight3D.visible = value
+
+@export var closed: bool = false:
+	get:
+		return $Bottom/Closed.visible
+	set(value):
+		$Bottom/Closed.visible = value
+		$Bottom/Closed/Closed2/Area3D.monitorable = !value
+		$Bottom/Closed/Closed2/Area3D.monitoring = !value

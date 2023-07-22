@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://dq4cs5rin3nj4"]
+
+[ext_resource type="Script" path="res://characters/Clara/Clara.gd" id="1_bcexs"]
+[ext_resource type="Texture2D" uid="uid://cakg5rtychtw3" path="res://characters/Clara/Clara.png" id="1_x8ss3"]
+[ext_resource type="Texture2D" uid="uid://bxeop2qbc72p4" path="res://characters/dialogue_box.png" id="2_kmv33"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5mjak"]
+height = 8.12177
+radius = 8.88777
+
+[node name="Clara" type="Node3D"]
+script = ExtResource("1_bcexs")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+billboard = 2
+texture = ExtResource("1_x8ss3")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CylinderShape3D_5mjak")
+
+[node name="DialogBox" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="DialogBox"]
+layout_mode = 0
+offset_right = 478.0
+offset_bottom = 95.0
+texture = ExtResource("2_kmv33")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="DialogBox"]
+offset_left = 18.0
+offset_top = 20.0
+offset_right = 446.0
+offset_bottom = 72.0
+autowrap_mode = 2
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

@@ -13,10 +13,22 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	if Input.is_action_pressed("interact") and interactable != null:
-		if interactable.name == "Apple":
+		if interactable.name.contains("Apple"):
 			interactable.queue_free()
 			$UI/Apple.visible = true
 			$Progress.play()
+		elif interactable.name == "Clara":
+			if($UI/Apple.visible == true and interactable.loot == "Matches"):
+				interactable.dialog = "CLARA: Yum! I feel like skating when the river is frozen over like this"
+				$UI/Apple.visible = false
+				$UI/Matches.visible = true
+				$Progress.play()
+		elif interactable.name == "Chris":
+			if($UI/Apple.visible == true and interactable.loot == "Dynamite"):
+				interactable.dialog = "CHRIS: Mmm..That dynamite can blast through anything. But it's not as strong as the flow of the river over time..."
+				$UI/Apple.visible = false
+				$UI/Dynamite.visible = true
+				$Progress.play()
 		elif interactable.name == "Axe":
 			interactable.queue_free()
 			$UI/Axe.visible = true
@@ -25,15 +37,16 @@ func _physics_process(delta):
 			interactable.queue_free()
 			interactable.get_parent().get_parent().get_node("Winter/Sword").queue_free
 			interactable.get_parent().get_parent().get_node("Fall/Sword").queue_free	
-			$UI/ColorRect.visible
+			$UI/ColorRect.visible = true
 			$Progress.play()			
 			$WinterMusic.stop()
 			$FallMusic.stop()
 			$SummerMusic.stop()
 			$SpringMusic.stop()
-			$UI/ColorRect/Credits.play();			
+			$UI/ColorRect/Credits.play();		
 			$UI/ColorRect/AnimationPlayer.play("scroll_up")
 			$UI/Sword.visible = true
+			get_tree().paused = true
 		elif interactable.name == "Tree":
 			if $UI/Axe.visible:
 				interactable.get_node("AnimationPlayer").play("fall")

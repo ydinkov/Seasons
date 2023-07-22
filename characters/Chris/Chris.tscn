@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmj24s18qegs8"]
+
+[ext_resource type="Texture2D" uid="uid://dw14u37hbuvyf" path="res://characters/Chris/Chris.png" id="1_4viyd"]
+[ext_resource type="Script" path="res://characters/Chris/Chris.gd" id="1_vc0we"]
+[ext_resource type="Texture2D" uid="uid://bxeop2qbc72p4" path="res://characters/dialogue_box.png" id="2_css8a"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_tfgr4"]
+height = 8.12177
+radius = 8.88777
+
+[node name="Chris" type="Node3D"]
+script = ExtResource("1_vc0we")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+billboard = 2
+texture = ExtResource("1_4viyd")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CylinderShape3D_tfgr4")
+
+[node name="DialogBox" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="DialogBox"]
+layout_mode = 0
+offset_right = 414.0
+offset_bottom = 95.0
+texture = ExtResource("2_css8a")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="DialogBox"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 20.0
+offset_right = 399.0
+offset_bottom = 92.0
+autowrap_mode = 2
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
